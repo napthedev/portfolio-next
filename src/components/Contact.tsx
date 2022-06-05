@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { FaGithub } from "react-icons/fa";
 import { socialLinks } from "../shared/contants";
 
 const Contact: FC = () => {

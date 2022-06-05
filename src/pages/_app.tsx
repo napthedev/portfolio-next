@@ -21,11 +21,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Script
         onLoad={() => {
           // @ts-ignore
-          const scroll = new LocomotiveScroll({
+          new LocomotiveScroll({
             el: document.querySelector("[data-scroll-container]"),
             smooth: true,
-            tablet: { smooth: true },
-            smartphone: { smooth: true },
+            tablet: { smooth: false },
+            smartphone: { smooth: false },
           });
         }}
         strategy="lazyOnload"

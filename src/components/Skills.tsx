@@ -7,7 +7,7 @@ interface SkillsProps {
 
 const Skills: FC<SkillsProps> = ({ skills }) => {
   return (
-    <div className="h-screen px-[10vw] flex flex-col items-center justify-center z-[4]">
+    <div className="min-h-[70vh] px-[10vw] flex flex-col items-center justify-center z-[4]">
       <h1
         data-scroll
         data-scroll-speed="1.5"
