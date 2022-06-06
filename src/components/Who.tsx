@@ -2,7 +2,10 @@ import { FC } from "react";
 
 const Who: FC = () => {
   return (
-    <div className="flex gap-[5vw] bg-dark-lighten px-[5vw] lg:px-[15vw] z-[2] min-h-[70vh] items-center justify-center flex-col md:flex-row">
+    <div
+      id="who"
+      className="flex gap-[5vw] bg-dark-lighten px-[5vw] lg:px-[15vw] z-[2] lg:min-h-[70vh] items-center justify-center flex-col md:flex-row"
+    >
       <img
         data-scroll
         data-scroll-speed="2"

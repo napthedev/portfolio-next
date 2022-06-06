@@ -10,26 +10,24 @@ interface MainProjectsProps {
 const MainProjects: FC<MainProjectsProps> = ({ projects }) => {
   return (
     <>
-      <h1 className="text-center text-4xl mb-20">Selected projects</h1>
+      <h1 className="text-center text-4xl mb-10 md:mb-20">Selected projects</h1>
       {projects.map((project, index) => (
         <div
           key={project.id}
-          className={`item flex gap-[20px] lg:gap-[100px] w-full px-[10vw] min-h-[60vh] my-10 ${
+          className={`item flex gap-[20px] lg:gap-[50px] w-full px-[5vw] md:min-h-[60vh] mb-20 md:my-10 ${
             index % 2 === 1
               ? "flex-col lg:flex-row"
               : "flex-col lg:flex-row-reverse"
           }`}
         >
-          <div data-scroll data-scroll-speed="3" className="flex-1">
-            <div className="relative before:absolute before:z-[-1] before:inset-[-2px] before:bg-[#888] before:rounded-[20px]">
-              <img
-                className="rounded-[20px] border-[8px] border-black"
-                src={project.image.url}
-                alt=""
-              />
+          <div data-scroll data-scroll-speed="3" className="lg:flex-1">
+            <div className="border-[#888] border-2 rounded-[20px] overflow-hidden">
+              <div className="border-black border-[8px]">
+                <img className="w-full" src={project.image.url} alt="" />
+              </div>
             </div>
           </div>
-          <div className="item-info flex-1">
+          <div className="item-info lg:flex-1">
             <h1 className="text-3xl">{project.title}</h1>
             <p className="text-[20px] text-justify my-3">
               {project.description}

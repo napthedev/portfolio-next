@@ -48,17 +48,19 @@ const Intro: FC = () => {
         {`I'm a frontend developer`}
       </m.p>
 
-      <m.div
+      <m.a
         data-scroll
         data-scroll-speed="2"
         data-scroll-delay="1"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 1.4 }}
-        className="absolute left-[calc(50%-23px)] bottom-[10vh]"
+        className="absolute left-[calc(50%-23px)] bottom-[10vh] cursor-pointer"
+        href="#who"
+        data-scroll-to
       >
         <BiChevronsDown className="animate-bounce" size={56} />
-      </m.div>
+      </m.a>
     </div>
   );
 };

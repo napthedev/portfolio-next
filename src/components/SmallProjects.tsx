@@ -7,7 +7,7 @@ interface SmallProjectsProps {
 
 const SmallProjects: FC<SmallProjectsProps> = ({ projects }) => {
   return (
-    <div className="flex justify-center mx-[10vw] mt-16">
+    <div className="flex justify-center mx-[5vw] mt-16">
       <div className="w-full max-w-[1100px]">
         <h1 className="text-4xl text-center">More of my works</h1>
         <p className="mt-4 mb-10 text-gray-400 text-lg text-center">{`I'm sure you will like some of my hobby projects`}</p>

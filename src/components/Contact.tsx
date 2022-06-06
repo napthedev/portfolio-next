@@ -4,8 +4,14 @@ import { socialLinks } from "../shared/contants";
 const Contact: FC = () => {
   return (
     <div className="pb-20">
-      <h1 className="text-center text-4xl mt-28 mb-10">Get in touch</h1>
-      <div className="flex justify-center mx-[10vw] mt-8">
+      <h1 className="text-center text-4xl mt-14 md:mt-28 mb-10">
+        Get in touch
+      </h1>
+      <div
+        data-scroll
+        data-scroll-speed="1"
+        className="flex justify-center mx-[10vw] mt-8"
+      >
         <div className="w-full max-w-[1100px] flex gap-10 flex-col md:flex-row">
           <div className="flex-1">
             <form

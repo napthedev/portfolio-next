@@ -5,7 +5,6 @@ import { LazyMotion, domAnimation } from "framer-motion";
 
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import Script from "next/script";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -41,19 +40,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <LazyMotion features={domAnimation}>
         <Component {...pageProps} />
       </LazyMotion>
-      <Script
-        onLoad={() => {
-          // @ts-ignore
-          new LocomotiveScroll({
-            el: document.querySelector("[data-scroll-container]"),
-            smooth: true,
-            tablet: { smooth: false },
-            smartphone: { smooth: false },
-          });
-        }}
-        strategy="lazyOnload"
-        src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.1/dist/locomotive-scroll.min.js"
-      />
     </>
   );
 }
