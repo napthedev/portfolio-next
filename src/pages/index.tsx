@@ -24,8 +24,10 @@ const Home: NextPage<HomeProps> = ({ data }) => {
     <LocomotiveScrollProvider
       options={{
         smooth: true,
-        tablet: { smooth: true },
-        smartphone: { smooth: false },
+        tablet: {
+          smooth: true,
+          breakpoint: 768,
+        },
       }}
       watch={[]}
       containerRef={containerRef}

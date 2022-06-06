@@ -19,12 +19,13 @@ const Who: FC = () => {
         </h1>
 
         <p data-scroll className="text-lg text-gray-200" id="story">
-          My name is Nguyen Anh Phong. I&apos;m a{" "}
-          {new Date().getFullYear() - 2007} years old frontend developer living
-          in Hanoi, Vietnam. I started learning web development when I was 13.
-          Since then, I have made a lot of projects, from basic HTML pages to
-          complex projects like a React library. I hope to be a great developer
-          and get my dream job in the future. Besides coding, I also like{" "}
+          My name is Nguyen Anh Phong.
+          {` I'm a ${new Date().getFullYear() - 2007}`} years old frontend
+          developer living in Hanoi, Vietnam. I started learning web development
+          when I was 13. Since then, I have made a lot of projects, from basic
+          HTML pages to complex projects like a React library. I hope to be a
+          great developer and get my dream job in the future. Besides coding, I
+          also like{" "}
           <a
             className="underline underline-offset-2"
             href="https://blog.napthedev.com/"

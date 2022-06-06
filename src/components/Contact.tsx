@@ -10,7 +10,7 @@ const Contact: FC = () => {
       <div
         data-scroll
         data-scroll-speed="1"
-        className="flex justify-center mx-[10vw] mt-8"
+        className="flex justify-center mx-[5vw] mt-8"
       >
         <div className="w-full max-w-[1100px] flex gap-10 flex-col md:flex-row">
           <div className="flex-1">
@@ -22,18 +22,27 @@ const Contact: FC = () => {
               className="flex flex-col gap-2"
             >
               <label htmlFor="name">Your name</label>
-              <input type="text" id="name" placeholder="A fake name" />
-              <label htmlFor="email">Your email</label>
               <input
                 type="text"
+                id="name"
+                placeholder="A fake name"
+                minLength={6}
+                maxLength={128}
+              />
+              <label htmlFor="email">Your email</label>
+              <input
+                type="email"
                 id="email"
                 placeholder="afakeemail@gmail.com"
+                maxLength={128}
               />
               <label htmlFor="subject">Subject</label>
               <input
                 type="text"
                 id="subject"
                 placeholder="I want to talk to you"
+                minLength={6}
+                maxLength={256}
               />
               <button className="mt-2 py-2 text-white rounded transition duration-300 flex justify-center items-center gap-[10px] bg-[#1876d2] hover:bg-[#2884e0]">
                 Send
