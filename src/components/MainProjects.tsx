@@ -23,7 +23,11 @@ const MainProjects: FC<MainProjectsProps> = ({ projects }) => {
           <div data-scroll data-scroll-speed="3" className="lg:flex-1">
             <div className="border-[#888] border-2 rounded-[20px] overflow-hidden">
               <div className="border-black border-[8px]">
-                <img className="w-full" src={project.image.url} alt="" />
+                <img
+                  className="w-full rounded-[12px]"
+                  src={project.image.url}
+                  alt=""
+                />
               </div>
             </div>
           </div>
