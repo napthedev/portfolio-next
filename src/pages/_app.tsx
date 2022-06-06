@@ -5,6 +5,7 @@ import { LazyMotion, domAnimation } from "framer-motion";
 
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import Script from "next/script";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -40,6 +41,19 @@ function MyApp({ Component, pageProps }: AppProps) {
       <LazyMotion features={domAnimation}>
         <Component {...pageProps} />
       </LazyMotion>
+      <Script
+        strategy="lazyOnload"
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+      ></Script>
+      <Script id="google-analytics" strategy="lazyOnload">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+        `}
+      </Script>
     </>
   );
 }
