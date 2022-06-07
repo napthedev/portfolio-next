@@ -24,13 +24,9 @@ const Contact: FC = () => {
               className="flex flex-col gap-2"
             >
               <label htmlFor="name">Your name</label>
-              <input type="text" id="name" placeholder="A fake name" />
+              <input type="text" id="name" placeholder="John Doe" />
               <label htmlFor="email">Your email</label>
-              <input
-                type="email"
-                id="email"
-                placeholder="afakeemail@gmail.com"
-              />
+              <input type="email" id="email" placeholder="johndoe@gmail.com" />
               <label htmlFor="subject">Subject</label>
               <input
                 type="text"
