@@ -2,12 +2,12 @@ import { gql } from "graphql-request";
 
 export const GET_ALL_DATA = gql`
   query {
-    skills {
+    skills(stage: PUBLISHED) {
       image
       title
       link
     }
-    projects {
+    projects(stage: PUBLISHED) {
       id
       title
       description
@@ -23,7 +23,7 @@ export const GET_ALL_DATA = gql`
         )
       }
     }
-    smallProjects {
+    smallProjects(stage: PUBLISHED) {
       id
       title
       description
