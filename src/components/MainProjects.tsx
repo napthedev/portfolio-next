@@ -24,7 +24,7 @@ const MainProjects: FC<MainProjectsProps> = ({ projects }) => {
             <div className="border-[#888] border-2 rounded-[20px] overflow-hidden">
               <div className="border-black border-[8px]">
                 <img
-                  className="w-full rounded-[12px]"
+                  className="w-full h-auto rounded-[12px]"
                   src={project.image.url}
                   alt=""
                 />

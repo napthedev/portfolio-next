@@ -17,6 +17,7 @@ export const GET_ALL_DATA = gql`
       image {
         url(
           transformation: {
+            document: { output: { format: webp } }
             image: { resize: { width: 700 } }
             validateOptions: true
           }
@@ -31,6 +32,7 @@ export const GET_ALL_DATA = gql`
       icon {
         url(
           transformation: {
+            document: { output: { format: webp } }
             image: { resize: { height: 40 } }
             validateOptions: true
           }
