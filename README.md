@@ -28,12 +28,11 @@ Official Website: [https://napthedev.com](https://napthedev.com)
 - Example .env file:
 
 ```env
-NEXT_PUBLIC_UMAMI_SCRIPT_URL=https://example.com/umami.js
-NEXT_PUBLIC_UMAMI_WEBSITE_ID=
+NEXT_PUBLIC_GA_ID=
 NEXT_PUBLIC_FORM_URL=
 ```
 
-- NEXT_PUBLIC_UMAMI_SCRIPT_URL, NEXT_PUBLIC_UMAMI_WEBSITE_ID: Setup [umami analytics](https://umami.is/) (optional)
+- NEXT_PUBLIC_GA_ID: Google Analytics
 - NEXT_PUBLIC_FORM_URL: Form to submit contact info ([endpoint.space](https://www.endpoint.space/) recommended)
 
 - Run `npm run dev`

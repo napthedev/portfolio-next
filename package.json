@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "analyze": "ANALYZE=true next build"
+    "lint": "next lint"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^12.1.6",
