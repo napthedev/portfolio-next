@@ -29,7 +29,7 @@ const Who: FC = () => {
           coding, I also like{" "}
           <a
             className="underline underline-offset-2"
-            href="https://blog.napthedev.com/"
+            href="https://blog-napthedev.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
           >

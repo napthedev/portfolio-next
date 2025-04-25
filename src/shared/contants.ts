@@ -37,7 +37,7 @@ export const socialLinks = [
   {
     title: "Facebook",
     icon: "/facebook.png",
-    link: "https://www.facebook.com/napthedev",
+    link: "https://www.facebook.com/phongna.dev",
   },
   {
     title: "Discord",
@@ -52,6 +52,6 @@ export const socialLinks = [
   {
     title: "My blog",
     icon: "/blog.png",
-    link: "https://blog.napthedev.com",
+    link: "https://blog-napthedev.vercel.app/",
   },
 ];
