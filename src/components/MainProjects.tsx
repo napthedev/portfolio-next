@@ -1,3 +1,5 @@
+"use client";
+
 import { BiLinkExternal } from "react-icons/bi";
 import { FC } from "react";
 import { FaGithub } from "react-icons/fa";

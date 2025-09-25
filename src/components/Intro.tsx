@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, Fragment } from "react";
 
 import { BiChevronsDown } from "react-icons/bi";

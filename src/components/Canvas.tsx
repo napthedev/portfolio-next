@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, useEffect, useRef } from "react";
 
 import { canvasImages } from "../shared/contants";

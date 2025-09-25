@@ -15,11 +15,12 @@ Official Website: [https://portfolio-napthedev.vercel.app/](https://portfolio-na
 
 ## Main technology used
 
-- nextjs, typescript
+- nextjs 14 with app router, typescript
 - tailwindcss
 - framer-motion (animation)
 - react-locomotive-scroll (parallax scroll)
 - graphql ([GraphCMS](https://graphcms.com/))
+- Incremental Static Regeneration (ISR) for optimized performance
 
 ## Installation
 
@@ -36,6 +37,17 @@ NEXT_PUBLIC_FORM_URL=
 - NEXT_PUBLIC_FORM_URL: Form to submit contact info ([endpoint.space](https://www.endpoint.space/) recommended)
 
 - Run `npm run dev`
+
+## ISR Implementation
+
+This portfolio uses Incremental Static Regeneration (ISR) for optimal performance:
+
+- **Pre-rendered at build time** for instant loading
+- **Auto-revalidation every 60 seconds** to keep content fresh
+- **On-demand revalidation** via webhook endpoint
+- **Client components** for interactivity while maintaining static benefits
+
+For detailed information about the ISR implementation, see [docs/ISR_IMPLEMENTATION.md](./docs/ISR_IMPLEMENTATION.md)
 
 ## Previews
 
