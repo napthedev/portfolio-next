@@ -23,8 +23,8 @@ This portfolio is powered by an exciting collection of modern web technologies:
 - 🎨 **Tailwind CSS** - Beautiful, responsive styling made simple  
 - 🌊 **Framer Motion** - Smooth, delightful animations that bring the UI to life
 - 🎢 **React Locomotive Scroll** - Silky smooth parallax scrolling effects
-- 🗃️ **GraphQL** with GraphCMS - Powerful content management and data fetching
-- ⚡ **Incremental Static Regeneration (ISR)** - Lightning-fast performance with fresh content
+- � **Local Data Management** - Fast, reliable static data with zero dependencies
+- ⚡ **Static Site Generation** - Lightning-fast performance with pre-built pages
 
 ## 🚀 Getting Started
 
@@ -43,23 +43,12 @@ Ready to run this project locally? Let's get you set up in no time!
    npm install
    ```
 
-3. **Configure your environment** 
-   Create a `.env.local` file in the root directory:
-   ```env
-   NEXT_PUBLIC_GA_ID=your_google_analytics_id
-   NEXT_PUBLIC_FORM_URL=your_contact_form_endpoint
-   ```
-
-   **What these do:**
-   - `NEXT_PUBLIC_GA_ID`: Your Google Analytics tracking ID for insights
-   - `NEXT_PUBLIC_FORM_URL`: Contact form endpoint (we recommend [endpoint.space](https://www.endpoint.space/) for easy setup!)
-
-4. **Launch the development server**
+3. **Launch the development server**
    ```bash
    npm run dev
    ```
 
-5. **Open your browser** and navigate to `http://localhost:3000` 🎉
+4. **Open your browser** and navigate to `http://localhost:3000` 🎉
 
 ## 🎯 Available Scripts
 

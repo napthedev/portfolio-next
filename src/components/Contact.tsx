@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import { socialLinks } from "../shared/contants";
+import { SOCIAL_LINKS } from "../data/social-links";
 
 const Contact: FC = () => {
   return (
@@ -52,7 +52,7 @@ const Contact: FC = () => {
           <div className="border-t border-gray-700 pt-8">
             <h2 className="text-xl mb-6">Find me elsewhere</h2>
             <div className="flex justify-center gap-6 flex-wrap">
-              {socialLinks.map((item) => (
+              {SOCIAL_LINKS.map((item) => (
                 <a
                   key={item.title}
                   href={item.link}

@@ -1,7 +1,8 @@
 "use client";
 
 import { FC } from "react";
-import { allDataType } from "../shared/types";
+import { allDataType } from "../data/types";
+import { generateIconUrl } from "../lib/utils";
 
 interface SkillsProps {
   skills: allDataType["skills"];
@@ -34,7 +35,7 @@ const Skills: FC<SkillsProps> = ({ skills }) => {
           >
             <img
               className="w-[60px] h-[60px] transition duration-300 group-hover:scale-110"
-              src={skill.image}
+              src={generateIconUrl(skill.image)}
               alt=""
             />
             <p className="text-center">{skill.title}</p>

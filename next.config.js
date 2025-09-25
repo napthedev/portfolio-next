@@ -6,16 +6,6 @@ const withAnalyzer = require("@next/bundle-analyzer")({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.module.rules.push({
-        test: /\b(?:graphql|graphql-request)\b/gi,
-        use: "null-loader",
-      });
-    }
-
-    return config;
-  },
 };
 
 module.exports = withAnalyzer(nextConfig);

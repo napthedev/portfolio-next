@@ -10,7 +10,7 @@ import MainProjects from "./MainProjects";
 import Skills from "./Skills";
 import SmallProjects from "./SmallProjects";
 import Who from "./Who";
-import { allDataType } from "../shared/types";
+import { allDataType } from "../data/types";
 
 interface ClientHomePageProps {
   data: allDataType;

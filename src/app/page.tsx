@@ -1,22 +1,7 @@
 import ClientHomePage from "../components/ClientHomePage";
-import { fetchPortfolioData } from "../lib/cms";
+import { getPortfolioData } from "../lib/local-data";
 
-// This is now a Server Component that will be statically generated
-export default async function HomePage() {
-  try {
-    const data = await fetchPortfolioData();
-    return <ClientHomePage data={data} />;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-lg text-red-500">
-          Error: Failed to fetch data. Please try again later.
-        </div>
-      </div>
-    );
-  }
+export default function HomePage() {
+  const data = getPortfolioData();
+  return <ClientHomePage data={data} />;
 }
-
-// Generate static params and enable ISR
-export const revalidate = 60; // Revalidate every 60 seconds

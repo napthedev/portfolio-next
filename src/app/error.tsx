@@ -16,29 +16,18 @@ export default function Error({
 
   const isNetworkError =
     error.message.includes("fetch") || error.message.includes("network");
-  const isCMSError =
-    error.message.includes("CMS") || error.message.includes("GraphQL");
 
   return (
     <div className="flex items-center justify-center min-h-screen flex-col bg-black text-white p-8">
       <div className="text-center max-w-md">
         <h1 className="text-2xl font-bold mb-4">Oops! Something went wrong</h1>
 
-        {isNetworkError && (
+        {isNetworkError ? (
           <p className="text-gray-300 mb-6">
             There seems to be a connection issue. Please check your internet
             connection and try again.
           </p>
-        )}
-
-        {isCMSError && (
-          <p className="text-gray-300 mb-6">
-            We&apos;re having trouble loading the portfolio content. Our team
-            has been notified.
-          </p>
-        )}
-
-        {!isNetworkError && !isCMSError && (
+        ) : (
           <p className="text-gray-300 mb-6">
             An unexpected error occurred while loading the portfolio.
           </p>

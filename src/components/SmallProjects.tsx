@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import { allDataType } from "../shared/types";
+import { allDataType } from "../data/types";
 
 interface SmallProjectsProps {
   projects: allDataType["smallProjects"];

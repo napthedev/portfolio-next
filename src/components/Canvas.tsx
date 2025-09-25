@@ -2,7 +2,7 @@
 
 import { FC, useEffect, useRef } from "react";
 
-import { canvasImages } from "../shared/contants";
+import { CANVAS_IMAGES } from "../data/canvas-images";
 import { m } from "framer-motion";
 
 const Canvas: FC = () => {
@@ -13,7 +13,7 @@ const Canvas: FC = () => {
 
     if (!canvas) return;
 
-    const images = canvasImages.map((source) => {
+    const images = CANVAS_IMAGES.map((source) => {
       const image = document.createElement("img");
       image.src = source;
       return image;

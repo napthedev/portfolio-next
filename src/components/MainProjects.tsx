@@ -3,7 +3,8 @@
 import { BiLinkExternal } from "react-icons/bi";
 import { FC } from "react";
 import { FaGithub } from "react-icons/fa";
-import { allDataType } from "../shared/types";
+import { allDataType } from "../data/types";
+import { generateIconUrl } from "../lib/utils";
 
 interface MainProjectsProps {
   projects: allDataType["projects"];
@@ -44,7 +45,7 @@ const MainProjects: FC<MainProjectsProps> = ({ projects }) => {
                 <img
                   key={tech}
                   className="w-[30px] h-[30px]"
-                  src={tech}
+                  src={generateIconUrl(tech, 30, 30)}
                   alt=""
                 />
               ))}
