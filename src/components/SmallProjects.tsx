@@ -1,6 +1,7 @@
 "use client";
 
 import { FC } from "react";
+import Image from "next/image";
 import { SIDE_PROJECTS } from "../data/side-projects";
 
 const SmallProjects: FC = () => {
@@ -23,10 +24,12 @@ const SmallProjects: FC = () => {
               className="flex gap-3 hover:bg-slate-900 p-3 transition duration-300"
               key={project.id}
             >
-              <img
+              <Image
                 className="h-[40px] w-[40px] my-1 object-cover"
                 src={project.icon.url}
-                alt=""
+                alt={`${project.title} project icon`}
+                width={40}
+                height={40}
               />
               <div>
                 <h1>{project.title}</h1>

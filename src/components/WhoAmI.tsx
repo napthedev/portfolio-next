@@ -1,6 +1,7 @@
 "use client";
 
 import { FC } from "react";
+import Image from "next/image";
 
 const Who: FC = () => {
   return (
@@ -8,12 +9,15 @@ const Who: FC = () => {
       id="who"
       className="flex gap-[5vw] px-[5vw] lg:px-[15vw] z-[2] lg:min-h-[70vh] items-center justify-center flex-col md:flex-row"
     >
-      <img
+      <Image
         data-scroll
         data-scroll-speed="2"
         className="w-[225px] h-[225px] rounded-full"
         src="/avatar.jpg"
-        alt=""
+        alt="Phong's avatar"
+        width={225}
+        height={225}
+        priority
       />
       <div>
         <h1 data-scroll data-scroll-speed="0.5" className="title text-[40px]">

@@ -1,6 +1,7 @@
 "use client";
 
 import { FC } from "react";
+import Image from "next/image";
 import { generateIconUrl } from "../lib/utils";
 import { SKILLS } from "../data/skills";
 
@@ -29,10 +30,12 @@ const Skills: FC = () => {
             key={skill.title}
             className="item flex flex-col items-center justify-around group"
           >
-            <img
+            <Image
               className="w-[60px] h-[60px] transition duration-300 group-hover:scale-110"
               src={generateIconUrl(skill.image)}
-              alt=""
+              alt={`${skill.title} skill icon`}
+              width={60}
+              height={60}
             />
             <p className="text-center">{skill.title}</p>
           </div>

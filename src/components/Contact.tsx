@@ -1,6 +1,7 @@
 "use client";
 
 import { FC } from "react";
+import Image from "next/image";
 import { SOCIAL_LINKS } from "../data/social-links";
 
 const Contact: FC = () => {
@@ -60,10 +61,12 @@ const Contact: FC = () => {
                   rel="noopener noreferrer"
                   className="flex flex-col items-center gap-2 hover:bg-slate-900 p-4 rounded-lg transition duration-300 min-w-[100px]"
                 >
-                  <img
+                  <Image
                     className="w-[40px] h-[40px] rounded-full"
                     src={item.icon}
-                    alt={item.title}
+                    alt={`${item.title} social media icon`}
+                    width={40}
+                    height={40}
                   />
                   <span className="text-sm text-gray-400">{item.title}</span>
                 </a>

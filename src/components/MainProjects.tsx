@@ -3,6 +3,7 @@
 import { BiLinkExternal } from "react-icons/bi";
 import { FC } from "react";
 import { FaGithub } from "react-icons/fa";
+import Image from "next/image";
 import { generateIconUrl } from "../lib/utils";
 import { PROJECTS } from "../data/projects";
 
@@ -22,10 +23,12 @@ const MainProjects: FC = () => {
           <div data-scroll data-scroll-speed="2" className="lg:flex-1">
             <div className="border-[#888] border-2 rounded-[20px] overflow-hidden">
               <div className="border-black border-[8px]">
-                <img
+                <Image
                   className="w-full h-auto rounded-[12px]"
                   src={project.image.url}
-                  alt=""
+                  alt={`${project.title} project screenshot`}
+                  width={600}
+                  height={400}
                 />
               </div>
             </div>
@@ -38,11 +41,13 @@ const MainProjects: FC = () => {
 
             <div className="flex gap-[5px]">
               {project.technologies.map((tech) => (
-                <img
+                <Image
                   key={tech}
                   className="w-[30px] h-[30px]"
                   src={generateIconUrl(tech, 30, 30)}
-                  alt=""
+                  alt={`${tech} technology icon`}
+                  width={30}
+                  height={30}
                 />
               ))}
             </div>
