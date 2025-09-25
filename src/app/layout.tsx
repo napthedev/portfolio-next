@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Phong's Portfolio",
   description: "Nguyen Anh Phong's Portfolio",
   icons: {
-    icon: "/rounded-avatar.png",
+    icon: "/favicon.png",
   },
   openGraph: {
     type: "website",
