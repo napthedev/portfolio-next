@@ -6,21 +6,23 @@ import Script from "next/script";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: "NAPTheDev's Portfolio",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  ),
+  title: "Phong's Portfolio",
   description: "Nguyen Anh Phong's Portfolio",
   icons: {
     icon: "/rounded-avatar.png",
   },
   openGraph: {
     type: "website",
-    title: "NAPTheDev's Portfolio",
+    title: "Phong's Portfolio",
     description: "Nguyen Anh Phong's Portfolio",
     images: ["/avatar.jpg"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NAPTheDev's Portfolio",
+    title: "Phong's Portfolio",
     description: "Nguyen Anh Phong's Portfolio",
     images: ["/avatar.jpg"],
   },
@@ -34,9 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <LazyMotion features={domAnimation}>
-          {children}
-        </LazyMotion>
+        <LazyMotion features={domAnimation}>{children}</LazyMotion>
         <Script
           strategy="lazyOnload"
           async

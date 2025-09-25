@@ -30,28 +30,23 @@ export const canvasImages = [
 
 export const socialLinks = [
   {
+    title: "Email",
+    icon: "/email.svg",
+    link: "mailto:phongna.dev@gmail.com",
+  },
+  {
     title: "Github",
-    icon: "/github.png",
+    icon: "/github.svg",
     link: "https://github.com/napthedev",
   },
   {
     title: "Facebook",
-    icon: "/facebook.png",
+    icon: "/facebook.svg",
     link: "https://www.facebook.com/phongna.dev",
   },
   {
-    title: "Discord",
-    icon: "/discord.png",
-    link: "https://discord.com/users/877882975855992852",
-  },
-  {
-    title: "Codepen",
-    icon: "/codepen.png",
-    link: "https://codepen.io/enaypi",
-  },
-  {
-    title: "My blog",
-    icon: "/blog.png",
-    link: "https://blog-napthedev.vercel.app/",
+    title: "LinkedIn",
+    icon: "/linkedin.svg",
+    link: "https://www.linkedin.com/in/phong-nguyen-anh",
   },
 ];
