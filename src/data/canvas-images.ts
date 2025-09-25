@@ -19,4 +19,6 @@ export const CANVAS_IMAGES = generateIconUrls([
   "docker",
   "python",
   "pnpm",
+  "copilot",
+  "claude",
 ]);
