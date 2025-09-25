@@ -28,11 +28,8 @@ const Skills: FC<SkillsProps> = ({ skills }) => {
       </p>
       <div className="grid justify-center grid-cols-4 md:grid-cols-6 gap-y-[10px] md:gap-y-[20px]">
         {skills.map((skill) => (
-          <a
-            key={skill.link}
-            href={skill.link}
-            target="_blank"
-            rel="noopener noreferrer"
+          <div
+            key={skill.title}
             className="item flex flex-col items-center justify-around group"
           >
             <img
@@ -41,7 +38,7 @@ const Skills: FC<SkillsProps> = ({ skills }) => {
               alt=""
             />
             <p className="text-center">{skill.title}</p>
-          </a>
+          </div>
         ))}
       </div>
     </div>
