@@ -1,13 +1,9 @@
 "use client";
 
 import { FC } from "react";
-import { allDataType } from "../data/types";
+import { SIDE_PROJECTS } from "../data/side-projects";
 
-interface SmallProjectsProps {
-  projects: allDataType["smallProjects"];
-}
-
-const SmallProjects: FC<SmallProjectsProps> = ({ projects }) => {
+const SmallProjects: FC = () => {
   return (
     <div className="flex justify-center mx-[5vw] mt-16">
       <div className="w-full max-w-[1100px]">
@@ -19,7 +15,7 @@ const SmallProjects: FC<SmallProjectsProps> = ({ projects }) => {
           data-scroll-speed="1"
           className="grid gap-2 grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] md:grid-cols-[repeat(auto-fill,_minmax(400px,_1fr))]"
         >
-          {projects.map((project) => (
+          {SIDE_PROJECTS.map((project) => (
             <a
               href={project.link}
               target="_blank"

@@ -3,18 +3,14 @@
 import { BiLinkExternal } from "react-icons/bi";
 import { FC } from "react";
 import { FaGithub } from "react-icons/fa";
-import { allDataType } from "../data/types";
 import { generateIconUrl } from "../lib/utils";
+import { PROJECTS } from "../data/projects";
 
-interface MainProjectsProps {
-  projects: allDataType["projects"];
-}
-
-const MainProjects: FC<MainProjectsProps> = ({ projects }) => {
+const MainProjects: FC = () => {
   return (
     <>
       <h1 className="text-center text-4xl mb-10 md:mb-20">Selected projects</h1>
-      {projects.map((project, index) => (
+      {PROJECTS.map((project, index) => (
         <div
           key={project.id}
           className={`item flex gap-[20px] lg:gap-[50px] w-full px-[5vw] md:min-h-[60vh] mb-20 md:my-10 ${

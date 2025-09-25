@@ -9,14 +9,9 @@ import Intro from "./Intro";
 import MainProjects from "./MainProjects";
 import Skills from "./Skills";
 import SmallProjects from "./SmallProjects";
-import Who from "./Who";
-import { allDataType } from "../data/types";
+import Who from "./WhoAmI";
 
-interface ClientHomePageProps {
-  data: allDataType;
-}
-
-export default function ClientHomePage({ data }: ClientHomePageProps) {
+export default function ClientHomePage() {
   const containerRef = useRef(null);
 
   return (
@@ -36,9 +31,9 @@ export default function ClientHomePage({ data }: ClientHomePageProps) {
       <div data-scroll-container ref={containerRef}>
         <Intro />
         <Who />
-        <Skills skills={data.skills} />
-        <MainProjects projects={data.projects} />
-        <SmallProjects projects={data.smallProjects} />
+        <Skills />
+        <MainProjects />
+        <SmallProjects />
         <Contact />
       </div>
     </LocomotiveScrollProvider>

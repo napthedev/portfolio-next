@@ -1,50 +1,50 @@
 export const SKILLS = [
   {
-    name: "HTML",
-    icon: "html",
+    image: "html",
+    title: "HTML",
   },
   {
-    name: "CSS",
-    icon: "css",
+    image: "css",
+    title: "CSS",
   },
   {
-    name: "TypeScript",
-    icon: "typescript",
+    image: "typescript",
+    title: "TypeScript",
   },
   {
-    name: "JavaScript",
-    icon: "javascript",
+    image: "javascript",
+    title: "JavaScript",
   },
   {
-    name: "Node.js",
-    icon: "nodejs",
+    image: "nodejs",
+    title: "Node.js",
   },
   {
-    name: "React",
-    icon: "react",
+    image: "react",
+    title: "React",
   },
   {
-    name: "Next.js",
-    icon: "next",
+    image: "next",
+    title: "Next.js",
   },
   {
-    name: "Svelte",
-    icon: "svelte",
+    image: "svelte",
+    title: "Svelte",
   },
   {
-    name: "Tailwind CSS",
-    icon: "tailwindcss",
+    image: "tailwindcss",
+    title: "Tailwind CSS",
   },
   {
-    name: "Git",
-    icon: "git",
+    image: "git",
+    title: "Git",
   },
   {
-    name: "Docker",
-    icon: "docker",
+    image: "docker",
+    title: "Docker",
   },
   {
-    name: "Firebase",
-    icon: "firebase",
+    image: "firebase",
+    title: "Firebase",
   },
 ];

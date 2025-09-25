@@ -1,14 +1,10 @@
 "use client";
 
 import { FC } from "react";
-import { allDataType } from "../data/types";
 import { generateIconUrl } from "../lib/utils";
+import { SKILLS } from "../data/skills";
 
-interface SkillsProps {
-  skills: allDataType["skills"];
-}
-
-const Skills: FC<SkillsProps> = ({ skills }) => {
+const Skills: FC = () => {
   return (
     <div className="lg:min-h-[70vh] px-[5vw] py-[80px] flex flex-col items-center justify-center z-[4]">
       <h1
@@ -28,7 +24,7 @@ const Skills: FC<SkillsProps> = ({ skills }) => {
         Technologies and languages that I use to make my product everyday
       </p>
       <div className="grid justify-center grid-cols-4 md:grid-cols-6 gap-y-[10px] md:gap-y-[20px]">
-        {skills.map((skill) => (
+        {SKILLS.map((skill) => (
           <div
             key={skill.title}
             className="item flex flex-col items-center justify-around group"
