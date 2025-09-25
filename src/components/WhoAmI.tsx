@@ -21,20 +21,12 @@ const Who: FC = () => {
         </h1>
 
         <p data-scroll className="text-lg text-gray-200" id="story">
-          My name is Nguyen Anh Phong. I&apos;m a frontend developer living in
-          Hanoi, Vietnam. I started learning web development when I was 13.
-          Since then, I have made a lot of projects, from basic HTML pages to
-          complex projects like a React library. I hope to be a great developer
-          and get my dream job in the future. Besides coding, I also like{" "}
-          <a
-            className="underline underline-offset-2"
-            href="https://blog-napthedev.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            writing blog posts
-          </a>
-          , listening to music and playing video games
+          My name is Nguyen Anh Phong, and I am a software developer based in
+          Hanoi, Vietnam. I first began exploring programming during high
+          school, starting with web development. Since then, I have worked on
+          projects ranging from simple HTML pages to advanced applications such
+          as a React library. I am currently pursuing a degree in Electrical
+          Engineering while continuing to expand my expertise in technology.
         </p>
       </div>
     </div>

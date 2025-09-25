@@ -1,13 +1,5 @@
 export const SKILLS = [
   {
-    image: "html",
-    title: "HTML",
-  },
-  {
-    image: "css",
-    title: "CSS",
-  },
-  {
     image: "typescript",
     title: "TypeScript",
   },
@@ -46,5 +38,13 @@ export const SKILLS = [
   {
     image: "firebase",
     title: "Firebase",
+  },
+  {
+    image: "python",
+    title: "Python",
+  },
+  {
+    image: "copilot",
+    title: "Copilot",
   },
 ];

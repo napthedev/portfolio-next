@@ -9,7 +9,7 @@ import { PROJECTS } from "../data/projects";
 const MainProjects: FC = () => {
   return (
     <>
-      <h1 className="text-center text-4xl mb-10 md:mb-20">Selected projects</h1>
+      <h1 className="text-center text-4xl mb-10 md:mb-20">My best projects</h1>
       {PROJECTS.map((project, index) => (
         <div
           key={project.id}
@@ -19,7 +19,7 @@ const MainProjects: FC = () => {
               : "flex-col lg:flex-row-reverse"
           }`}
         >
-          <div data-scroll data-scroll-speed="3" className="lg:flex-1">
+          <div data-scroll data-scroll-speed="2" className="lg:flex-1">
             <div className="border-[#888] border-2 rounded-[20px] overflow-hidden">
               <div className="border-black border-[8px]">
                 <img
