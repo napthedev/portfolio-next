@@ -16,7 +16,7 @@ export const PROJECTS = [
     title: "E-Cinema",
     description:
       "A modern movie streaming platform built with Next.js and TypeScript. Features movie discovery using TMDB API, streaming integration with 2embed, responsive design, and an intuitive user interface for browsing and watching movies and TV shows.",
-    demo: "https://e-cinema.vercel.app/",
+    demo: "https://e-cinema.netlify.app/",
     github: "https://github.com/napthedev/e-cinema.git",
     technologies: ["next", "typescript", "tailwindcss"],
     image: {
