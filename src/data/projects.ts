@@ -13,18 +13,6 @@ export const PROJECTS = [
   },
   {
     id: "project-2",
-    title: "E-Cinema",
-    description:
-      "A modern movie streaming platform built with Next.js and TypeScript. Features movie discovery using TMDB API, streaming integration with 2embed, responsive design, and an intuitive user interface for browsing and watching movies and TV shows.",
-    demo: "https://e-cinema.netlify.app/",
-    github: "https://github.com/napthedev/e-cinema.git",
-    technologies: ["next", "typescript", "tailwindcss"],
-    image: {
-      url: "/projects/e-cinema.png",
-    },
-  },
-  {
-    id: "project-3",
     title: "FireVerse",
     description:
       "A full-featured real-time messaging application built with React, TypeScript, Tailwind CSS, and Firebase. Includes instant messaging, user authentication, and modern chat features.",
@@ -36,7 +24,7 @@ export const PROJECTS = [
     },
   },
   {
-    id: "project-4",
+    id: "project-3",
     title: "React CSSFX Loading",
     description:
       "A React component library providing elegant loading animations from the CSSFX collection. Simple plug-and-play integration for beautiful loading states.",
@@ -48,7 +36,7 @@ export const PROJECTS = [
     },
   },
   {
-    id: "project-5",
+    id: "project-4",
     title: "MacOS Big Sur on the Web",
     description:
       "A pixel-perfect macOS Big Sur interface recreation built with Vue.js and TypeScript. Features light/dark mode switching, multiple wallpapers, and animated dock.",
