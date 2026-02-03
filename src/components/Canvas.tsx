@@ -5,6 +5,39 @@ import { FC, useEffect, useRef } from "react";
 import { CANVAS_IMAGES } from "../data/canvas-images";
 import { m, useReducedMotion } from "framer-motion";
 
+const jitteredGridPositions = (
+  width: number,
+  height: number,
+  count: number,
+  padding: number,
+) => {
+  const aspectRatio = width / height;
+  const cols = Math.ceil(Math.sqrt(count * aspectRatio));
+  const rows = Math.ceil(count / cols);
+
+  const cellWidth = (width - padding * 2) / cols;
+  const cellHeight = (height - padding * 2) / rows;
+
+  const positions: { x: number; y: number }[] = [];
+
+  for (let i = 0; i < count; i++) {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+
+    // Center of the cell + random jitter (up to 40% of cell size)
+    const jitterX = (Math.random() - 0.5) * cellWidth * 0.8;
+    const jitterY = (Math.random() - 0.5) * cellHeight * 0.8;
+
+    positions.push({
+      x: padding + cellWidth * (col + 0.5) + jitterX,
+      y: padding + cellHeight * (row + 0.5) + jitterY,
+    });
+  }
+
+  // Shuffle to randomize which image goes where
+  return positions.sort(() => Math.random() - 0.5);
+};
+
 const Canvas: FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reduceMotion = useReducedMotion();
@@ -15,7 +48,7 @@ const Canvas: FC = () => {
     if (!canvas) return;
 
     const reduceMotionQuery = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     );
     const prefersReducedMotion = reduceMotionQuery.matches;
 
@@ -43,7 +76,7 @@ const Canvas: FC = () => {
         dy: number,
         angle: number,
         size: number,
-        image: HTMLImageElement
+        image: HTMLImageElement,
       ) {
         this.x = x;
         this.y = y;
@@ -77,7 +110,7 @@ const Canvas: FC = () => {
           -this.size / 2,
           -this.size / 2,
           this.size,
-          this.size
+          this.size,
         );
         ctx.restore();
       }
@@ -99,17 +132,25 @@ const Canvas: FC = () => {
       const maxIcons = innerWidth < 768 ? 12 : images.length;
       const sampledImages = images.slice(0, maxIcons);
 
+      // Generate jittered grid positions for even distribution
+      const positions = jitteredGridPositions(
+        innerWidth,
+        innerHeight,
+        sampledImages.length,
+        SIZE,
+      );
+
       particles = sampledImages.map(
-        (image) =>
+        (image, i) =>
           new Particle(
-            SIZE + Math.random() * (innerWidth - SIZE * 2),
-            SIZE + Math.random() * (innerHeight - SIZE * 2),
+            positions[i].x,
+            positions[i].y,
             (Math.random() - 0.5) * 1.5,
             (Math.random() - 0.5) * 1.5,
             0,
             SIZE,
-            image
-          )
+            image,
+          ),
       );
 
       const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -151,7 +192,7 @@ const Canvas: FC = () => {
       ([entry]) => {
         isPaused = !entry.isIntersecting;
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     observer.observe(canvas);
@@ -170,7 +211,10 @@ const Canvas: FC = () => {
     <m.canvas
       initial={{ opacity: reduceMotion ? 0.6 : 0 }}
       animate={{ opacity: 0.6 }}
-      transition={{ duration: reduceMotion ? 0 : 0.4, delay: reduceMotion ? 0 : 1.4 }}
+      transition={{
+        duration: reduceMotion ? 0 : 0.4,
+        delay: reduceMotion ? 0 : 1.4,
+      }}
       ref={canvasRef}
       className="absolute inset-0 w-full h-full"
     />

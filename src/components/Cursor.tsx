@@ -61,7 +61,8 @@ const Cursor: FC = () => {
   return (
     <div
       ref={cursorRef}
-      className="w-7 h-7 bg-transparent border border-white rounded-full fixed z-50 pointer-events-none hidden transition duration-75 will-change-transform"
+      className="w-7 h-7 bg-transparent border border-white rounded-full fixed z-50 pointer-events-none hidden transition duration-75 will-change-transform top-0 left-0"
+      style={{ marginLeft: "-14px", marginTop: "-14px" }}
     ></div>
   );
 };
