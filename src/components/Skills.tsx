@@ -9,12 +9,12 @@ import Parallax from "./Parallax";
 const Skills: FC = () => {
   return (
     <div className="lg:min-h-[70vh] px-[5vw] py-[80px] flex flex-col items-center justify-center z-[4]">
-      <Parallax speed={-0.6} direction="horizontal">
+      <Parallax speed={-0.3} direction="horizontal">
         <h1 className="text-center text-3xl lg:text-4xl">
           My skills & Knowledge
         </h1>
       </Parallax>
-      <Parallax speed={0.6} direction="horizontal">
+      <Parallax speed={0.3} direction="horizontal">
         <p className="description text-lg text-center my-[30px]">
           Technologies and languages that I use to create my projects everyday
         </p>
