@@ -3,7 +3,7 @@ export const PROJECTS = [
     id: "project-1",
     title: "Forest Monitor",
     description:
-      "An intelligent exam generation platform that converts PDF documents into interactive multiple-choice exams using AI. Features user authentication, real-time exam attempts, progress tracking, and comprehensive result analytics.",
+      "Forest Monitor is an end-to-end environmental monitoring system that uses ESP32 and FreeRTOS to stream real-time sensor data to a Firebase-powered Next.js dashboard.",
     demo: "https://forest-monitor.vercel.app/",
     github: "https://github.com/napthedev/forest-monitor.git",
     technologies: ["cpp", "next", "typescript"],
