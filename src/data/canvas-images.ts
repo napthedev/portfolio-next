@@ -21,4 +21,5 @@ export const CANVAS_IMAGES = generateIconUrls([
   "pnpm",
   "copilot",
   "claude",
+  "cpp",
 ]);

@@ -1,6 +1,6 @@
 # 🚀 Phong's Portfolio
 
-Welcome to my digital playground! ✨ This is where creativity meets code, and where my passion for web development comes to life. Built with love using cutting-edge technologies!
+Welcome to my digital playground! ✨ This is where creativity meets code, and where my passion for technology comes to life. Built with love using cutting-edge technologies!
 
 <p align="center">
   <img alt="Stars" src="https://badgen.net/github/stars/napthedev/portfolio-next">

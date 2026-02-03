@@ -44,7 +44,7 @@ export const SKILLS = [
     title: "Python",
   },
   {
-    image: "copilot",
-    title: "Copilot",
+    image: "cpp",
+    title: "C++",
   },
 ];

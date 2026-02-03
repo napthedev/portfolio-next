@@ -18,7 +18,7 @@ const Contact: FC = () => {
         <div className="w-full max-w-[600px] text-center">
           <p className="text-lg mb-8 text-gray-400">
             I&apos;m always open to discussing new opportunities,
-            collaborations, or just having a chat about web development.
+            collaborations, or just having a chat about technology.
           </p>
 
           <a

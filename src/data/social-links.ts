@@ -12,7 +12,7 @@ export const SOCIAL_LINKS = [
   {
     title: "Facebook",
     icon: "/facebook.svg",
-    link: "https://www.facebook.com/phongna.dev",
+    link: "https://www.facebook.com/just.call.me.nap/",
   },
   {
     title: "LinkedIn",
