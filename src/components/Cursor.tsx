@@ -18,8 +18,9 @@ const Cursor: FC = () => {
 
   useEffect(() => {
     if (window.matchMedia("(pointer: coarse)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    window.addEventListener("mousemove", (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       if (cursorRef.current) {
         if (isFirstMove.current) {
           cursorRef.current.style.display = "block";
@@ -31,10 +32,13 @@ const Cursor: FC = () => {
         realMouse.current.x = e.clientX;
         realMouse.current.y = e.clientY;
       }
-    });
+    };
 
+    window.addEventListener("mousemove", handleMouseMove);
+
+    let rafId: number | null = null;
     const updateMouse = () => {
-      requestAnimationFrame(updateMouse);
+      rafId = requestAnimationFrame(updateMouse);
 
       displayedMouse.current.x +=
         (realMouse.current.x - displayedMouse.current.x) * 0.1;
@@ -42,18 +46,22 @@ const Cursor: FC = () => {
         (realMouse.current.y - displayedMouse.current.y) * 0.1;
 
       if (cursorRef.current) {
-        cursorRef.current.style.left = `${displayedMouse.current.x}px`;
-        cursorRef.current.style.top = `${displayedMouse.current.y}px`;
+        cursorRef.current.style.transform = `translate3d(${displayedMouse.current.x}px, ${displayedMouse.current.y}px, 0)`;
       }
     };
 
     updateMouse();
+
+    return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   return (
     <div
       ref={cursorRef}
-      className="w-7 h-7 bg-transparent border border-white rounded-full fixed z-50 -translate-x-1/2 -translate-y-1/2 pointer-events-none hidden transition duration-75"
+      className="w-7 h-7 bg-transparent border border-white rounded-full fixed z-50 pointer-events-none hidden transition duration-75 will-change-transform"
     ></div>
   );
 };

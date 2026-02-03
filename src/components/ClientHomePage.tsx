@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 
 import Contact from "./Contact";
@@ -13,16 +13,33 @@ import Who from "./WhoAmI";
 
 export default function ClientHomePage() {
   const containerRef = useRef(null);
+  const [useSmooth, setUseSmooth] = useState(true);
+
+  useEffect(() => {
+    const media = window.matchMedia("(pointer: fine)");
+    const update = () => setUseSmooth(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  const options = useMemo(
+    () => ({
+      smooth: useSmooth,
+      tablet: {
+        smooth: false,
+        breakpoint: 768,
+      },
+      smartphone: {
+        smooth: false,
+      },
+    }),
+    [useSmooth]
+  );
 
   return (
     <LocomotiveScrollProvider
-      options={{
-        smooth: true,
-        tablet: {
-          smooth: true,
-          breakpoint: 768,
-        },
-      }}
+      options={options}
       watch={[]}
       containerRef={containerRef}
     >

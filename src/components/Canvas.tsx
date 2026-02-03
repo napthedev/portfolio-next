@@ -3,15 +3,21 @@
 import { FC, useEffect, useRef } from "react";
 
 import { CANVAS_IMAGES } from "../data/canvas-images";
-import { m } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 
 const Canvas: FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     const canvas = canvasRef.current;
 
     if (!canvas) return;
+
+    const reduceMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+    const prefersReducedMotion = reduceMotionQuery.matches;
 
     const images = CANVAS_IMAGES.map((source) => {
       const image = document.createElement("img");
@@ -19,22 +25,7 @@ const Canvas: FC = () => {
       return image;
     });
 
-    let ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
-
-    const mouse = {
-      x: -1000,
-      y: -1000,
-    };
-
-    canvas.addEventListener("mousemove", (e) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY + Math.abs(canvas.getBoundingClientRect().top);
-    });
-
-    canvas.addEventListener("mouseleave", () => {
-      mouse.x = -1000;
-      mouse.y = -1000;
-    });
+    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
     class Particle {
       x: number;
@@ -93,6 +84,10 @@ const Canvas: FC = () => {
     }
 
     let particles: Particle[] = [];
+    let rafId: number | null = null;
+    let lastFrameTime = 0;
+    let isPaused = false;
+    let isVisible = true;
 
     let expectedSize = Math.round(innerWidth / 20);
     let SIZE = expectedSize < 30 ? 30 : expectedSize > 50 ? 50 : expectedSize;
@@ -101,7 +96,10 @@ const Canvas: FC = () => {
       let expectedSize = Math.round(innerWidth / 20);
       SIZE = expectedSize < 30 ? 30 : expectedSize > 50 ? 50 : expectedSize;
 
-      particles = images.map(
+      const maxIcons = innerWidth < 768 ? 12 : images.length;
+      const sampledImages = images.slice(0, maxIcons);
+
+      particles = sampledImages.map(
         (image) =>
           new Particle(
             SIZE + Math.random() * (innerWidth - SIZE * 2),
@@ -114,12 +112,21 @@ const Canvas: FC = () => {
           )
       );
 
-      canvas.width = innerWidth;
-      canvas.height = innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = Math.round(innerWidth * dpr);
+      canvas.height = Math.round(innerHeight * dpr);
+      canvas.style.width = `${innerWidth}px`;
+      canvas.style.height = `${innerHeight}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
-    const animate = () => {
-      requestAnimationFrame(animate);
+    const animate = (time: number) => {
+      rafId = requestAnimationFrame(animate);
+      if (isPaused || !isVisible) return;
+
+      const minFrameTime = 1000 / 30;
+      if (time - lastFrameTime < minFrameTime) return;
+      lastFrameTime = time;
 
       ctx.clearRect(0, 0, innerWidth, innerHeight);
 
@@ -129,16 +136,41 @@ const Canvas: FC = () => {
     };
 
     setup();
-    animate();
+    if (!prefersReducedMotion) {
+      rafId = requestAnimationFrame(animate);
+    } else {
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      particles.forEach((particle) => particle.draw());
+    }
 
+    const handleVisibility = () => {
+      isVisible = document.visibilityState === "visible";
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isPaused = !entry.isIntersecting;
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(canvas);
     window.addEventListener("resize", setup);
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      observer.disconnect();
+      window.removeEventListener("resize", setup);
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
   }, []);
 
   return (
     <m.canvas
-      initial={{ opacity: 0 }}
+      initial={{ opacity: reduceMotion ? 0.6 : 0 }}
       animate={{ opacity: 0.6 }}
-      transition={{ duration: 0.4, delay: 1.4 }}
+      transition={{ duration: reduceMotion ? 0 : 0.4, delay: reduceMotion ? 0 : 1.4 }}
       ref={canvasRef}
       className="absolute inset-0 w-full h-full"
     />
