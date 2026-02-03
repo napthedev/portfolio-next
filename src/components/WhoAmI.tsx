@@ -2,6 +2,7 @@
 
 import { FC } from "react";
 import Image from "next/image";
+import Parallax from "./Parallax";
 
 const Who: FC = () => {
   return (
@@ -9,22 +10,25 @@ const Who: FC = () => {
       id="who"
       className="flex gap-[5vw] px-[5vw] lg:px-[15vw] z-[2] lg:min-h-[70vh] items-center justify-center flex-col md:flex-row"
     >
-      <Image
-        data-scroll
-        data-scroll-speed="2"
-        className="w-[225px] h-[225px] rounded-full"
-        src="/avatar.jpg"
-        alt="Phong's avatar"
-        width={225}
-        height={225}
-        priority
-      />
+      <Parallax
+        speed={2}
+        className="rounded-full overflow-hidden w-[225px] h-[225px] flex-shrink-0"
+      >
+        <Image
+          className="w-full h-full object-cover"
+          src="/avatar.jpg"
+          alt="Phong's avatar"
+          width={225}
+          height={225}
+          priority
+        />
+      </Parallax>
       <div>
-        <h1 data-scroll data-scroll-speed="0.5" className="title text-[40px]">
-          Who am I?
-        </h1>
+        <Parallax speed={0.5}>
+          <h1 className="title text-[40px]">Who am I?</h1>
+        </Parallax>
 
-        <p data-scroll className="text-lg text-gray-200" id="story">
+        <p className="text-lg text-gray-200" id="story">
           My name is Nguyen Anh Phong, and I am a software developer based in
           Hanoi, Vietnam. I first began exploring programming during high
           school, starting with web development. Since then, I have worked on

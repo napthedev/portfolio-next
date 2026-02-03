@@ -4,20 +4,53 @@ import { FC, Fragment } from "react";
 
 import { BiChevronsDown } from "react-icons/bi";
 import Canvas from "./Canvas";
+import Parallax from "./Parallax";
 import { characters } from "../data/animation-characters";
 import { m, useReducedMotion } from "framer-motion";
 
 const Intro: FC = () => {
   const reduceMotion = useReducedMotion();
   const pathDraw = reduceMotion
-    ? { initial: { pathLength: 1 }, animate: { pathLength: 1 }, transition: { duration: 0 } }
-    : { initial: { pathLength: 0 }, animate: { pathLength: 1 }, transition: { duration: 1 } };
+    ? {
+        initial: { pathLength: 1 },
+        animate: { pathLength: 1 },
+        transition: { duration: 0 },
+      }
+    : {
+        initial: { pathLength: 0 },
+        animate: { pathLength: 1 },
+        transition: { duration: 1 },
+      };
   const fillDraw = reduceMotion
-    ? { initial: { fill: "#ffffff" }, animate: { fill: "#ffffff" }, transition: { duration: 0 } }
-    : { initial: { fill: "#ffffff00" }, animate: { fill: "#ffffff" }, transition: { duration: 0.6 } };
+    ? {
+        initial: { fill: "#ffffff" },
+        animate: { fill: "#ffffff" },
+        transition: { duration: 0 },
+      }
+    : {
+        initial: { fill: "#ffffff00" },
+        animate: { fill: "#ffffff" },
+        transition: { duration: 0.6 },
+      };
   const fadeIn = reduceMotion
-    ? { initial: { opacity: 1 }, animate: { opacity: 1 }, transition: { duration: 0 } }
-    : { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { duration: 0.4 } };
+    ? {
+        initial: { opacity: 1 },
+        animate: { opacity: 1 },
+        transition: { duration: 0 },
+      }
+    : {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        transition: { duration: 0.4 },
+      };
+
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const target = document.getElementById("who");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="relative h-screen flex justify-center items-center flex-col gap-5">
@@ -56,30 +89,33 @@ const Intro: FC = () => {
           </Fragment>
         ))}
       </svg>
-      <m.p
-        data-scroll
-        data-scroll-speed="1"
-        initial={fadeIn.initial}
-        animate={fadeIn.animate}
-        transition={{ ...fadeIn.transition, delay: reduceMotion ? 0 : 1.4 }}
-        className="text-3xl text-center z-[1] overflow-hidden"
-      >
-        {`Just another tech enthusiast`}
-      </m.p>
 
-      <m.a
-        data-scroll
-        data-scroll-speed="2"
-        data-scroll-delay="1"
-        initial={fadeIn.initial}
-        animate={fadeIn.animate}
-        transition={{ ...fadeIn.transition, delay: reduceMotion ? 0 : 1.4 }}
-        className="absolute left-[calc(50%-23px)] bottom-[10vh] cursor-pointer"
-        href="#who"
-        data-scroll-to
+      <Parallax speed={1}>
+        <m.p
+          initial={fadeIn.initial}
+          animate={fadeIn.animate}
+          transition={{ ...fadeIn.transition, delay: reduceMotion ? 0 : 1.4 }}
+          className="text-3xl text-center z-[1] overflow-hidden"
+        >
+          {`Just another tech enthusiast`}
+        </m.p>
+      </Parallax>
+
+      <Parallax
+        speed={2}
+        className="absolute left-[calc(50%-23px)] bottom-[10vh]"
       >
-        <BiChevronsDown className="animate-bounce" size={56} />
-      </m.a>
+        <m.a
+          initial={fadeIn.initial}
+          animate={fadeIn.animate}
+          transition={{ ...fadeIn.transition, delay: reduceMotion ? 0 : 1.4 }}
+          className="cursor-pointer block"
+          href="#who"
+          onClick={handleScrollTo}
+        >
+          <BiChevronsDown className="animate-bounce" size={56} />
+        </m.a>
+      </Parallax>
     </div>
   );
 };

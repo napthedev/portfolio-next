@@ -6,6 +6,7 @@ import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import { generateIconUrl } from "../lib/utils";
 import { PROJECTS } from "../data/projects";
+import Parallax from "./Parallax";
 
 const MainProjects: FC = () => {
   return (
@@ -20,7 +21,7 @@ const MainProjects: FC = () => {
               : "flex-col lg:flex-row-reverse"
           }`}
         >
-          <div data-scroll data-scroll-speed="2" className="lg:flex-1">
+          <Parallax speed={2} className="lg:flex-1">
             <div className="border-[#888] border-2 rounded-[20px] overflow-hidden">
               <div className="border-black border-[8px]">
                 <Image
@@ -32,7 +33,7 @@ const MainProjects: FC = () => {
                 />
               </div>
             </div>
-          </div>
+          </Parallax>
           <div className="item-info lg:flex-1">
             <h1 className="text-3xl">{project.title}</h1>
             <p className="text-[20px] text-justify my-3">
