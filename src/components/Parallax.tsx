@@ -1,7 +1,13 @@
 "use client";
 
-import { ReactNode, useRef } from "react";
-import { m, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { ReactNode, useRef, useEffect, useId } from "react";
+import {
+  m,
+  useReducedMotion,
+  useTransform,
+  useMotionValue,
+} from "framer-motion";
+import { useOptionalScrollContext } from "../lib/scroll-context";
 
 interface ParallaxProps {
   children: ReactNode;
@@ -39,6 +45,10 @@ interface ParallaxProps {
  * Parallax component that creates scroll-linked animations using Framer Motion.
  * Replaces Locomotive Scroll's data-scroll and data-scroll-speed attributes.
  *
+ * This optimized version uses a shared ScrollProvider context instead of creating
+ * individual useScroll hooks for each instance, significantly reducing the number
+ * of scroll listeners and improving performance.
+ *
  * Respects user's prefers-reduced-motion setting for accessibility.
  */
 const Parallax = ({
@@ -49,27 +59,53 @@ const Parallax = ({
   baseRange = 50,
 }: ParallaxProps) => {
   const ref = useRef<HTMLDivElement>(null);
+  const uniqueId = useId();
   const prefersReducedMotion = useReducedMotion();
+  const scrollContext = useOptionalScrollContext();
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    // Track from when element enters viewport to when it leaves
-    offset: ["start end", "end start"],
-  });
+  // Create a motion value that we'll update based on scroll progress
+  const progress = useMotionValue(0.5);
 
   // Calculate the pixel offset based on speed
-  // When scrollYProgress is 0 (element entering from bottom), position is positive (down/right)
-  // When scrollYProgress is 1 (element leaving at top), position is negative (up/left)
   const range = baseRange * speed;
 
-  const transform = useTransform(scrollYProgress, [0, 1], [range, -range]);
+  // Transform progress (0-1) to pixel offset
+  const transform = useTransform(progress, [0, 1], [range, -range]);
 
-  // If user prefers reduced motion, don't apply parallax transforms
-  const style = prefersReducedMotion
-    ? {}
-    : direction === "vertical"
-      ? { y: transform }
-      : { x: transform };
+  // Register with scroll context and update progress on scroll
+  useEffect(() => {
+    if (!scrollContext || prefersReducedMotion) return;
+
+    const { scrollY, registerElement, getElementProgress } = scrollContext;
+
+    // Register this element
+    const unregister = registerElement(uniqueId, ref);
+
+    // Subscribe to scroll changes and update progress
+    const unsubscribe = scrollY.on("change", () => {
+      const elementProgress = getElementProgress(uniqueId);
+      progress.set(elementProgress);
+    });
+
+    // Set initial progress
+    requestAnimationFrame(() => {
+      const elementProgress = getElementProgress(uniqueId);
+      progress.set(elementProgress);
+    });
+
+    return () => {
+      unregister();
+      unsubscribe();
+    };
+  }, [scrollContext, uniqueId, progress, prefersReducedMotion]);
+
+  // If user prefers reduced motion or no scroll context, don't apply parallax transforms
+  const style =
+    prefersReducedMotion || !scrollContext
+      ? {}
+      : direction === "vertical"
+        ? { y: transform }
+        : { x: transform };
 
   return (
     <m.div ref={ref} style={style} className={className}>

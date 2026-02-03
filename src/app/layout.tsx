@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 
 import { LazyMotion, domAnimation } from "framer-motion";
+import { ScrollProvider } from "../lib/scroll-context";
 import Script from "next/script";
 import type { Metadata } from "next";
 
@@ -35,7 +36,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <LazyMotion features={domAnimation}>{children}</LazyMotion>
+        <LazyMotion features={domAnimation}>
+          <ScrollProvider>{children}</ScrollProvider>
+        </LazyMotion>
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>
             <Script
