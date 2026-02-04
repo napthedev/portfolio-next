@@ -101,6 +101,8 @@ const Canvas: FC = () => {
       }
 
       draw() {
+        if (!this.image) return;
+
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate(this.angle * (Math.PI / 180));

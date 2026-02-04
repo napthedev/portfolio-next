@@ -50,8 +50,6 @@ export function ScrollProvider({ children }: ScrollProviderProps) {
   const scrollY = useMotionValue(0);
   const [viewportHeight, setViewportHeight] = useState(0);
   const elementsRef = useRef<Map<string, ElementEntry>>(new Map());
-  const rafIdRef = useRef<number | null>(null);
-  const lastScrollYRef = useRef(0);
   const prefersReducedMotion = useReducedMotion();
 
   // Update scroll position using RAF for smooth performance
@@ -62,18 +60,14 @@ export function ScrollProvider({ children }: ScrollProviderProps) {
 
     const updateScroll = () => {
       const currentScrollY = window.scrollY;
-
-      // Only update if scroll position changed
-      if (currentScrollY !== lastScrollYRef.current) {
-        lastScrollYRef.current = currentScrollY;
-        scrollY.set(currentScrollY);
-      }
-
-      rafIdRef.current = requestAnimationFrame(updateScroll);
+      scrollY.set(currentScrollY);
     };
 
-    // Start the RAF loop
-    rafIdRef.current = requestAnimationFrame(updateScroll);
+    // Update scroll on scroll events
+    window.addEventListener("scroll", updateScroll, { passive: true });
+
+    // Initial update
+    updateScroll();
 
     // Handle resize
     const handleResize = () => {
@@ -99,9 +93,7 @@ export function ScrollProvider({ children }: ScrollProviderProps) {
     window.addEventListener("resize", debouncedResize, { passive: true });
 
     return () => {
-      if (rafIdRef.current !== null) {
-        cancelAnimationFrame(rafIdRef.current);
-      }
+      window.removeEventListener("scroll", updateScroll);
       window.removeEventListener("resize", debouncedResize);
       clearTimeout(resizeTimeout);
     };
